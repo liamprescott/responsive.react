@@ -1,0 +1,20 @@
+# Node modules (handled via ignore patterns in VS)
+node_modules/**/*
+
+# All 'package managed' vendor dependencies
+# bower_components/**/*
+
+# All 'non-package-managed' vendor dependencies
+# /script/vendor/**/*.js
+
+# All (build process) configuration files in the root directory (JS / JSON)
+# e.g. package.json or postcss-options-*.json
+/*.json
+/*.js
+
+# Deployment
+/script/deploy/**/*
+
+# Specifics
+# /script/library/reducers/schema.js
+# /script/library/reducers/schema_documented.js

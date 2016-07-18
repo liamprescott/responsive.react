@@ -1,0 +1,61 @@
+{
+  "name": "resonsive-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.htm",
+  "keywords": [],
+  "author": "",
+  "contributors": [
+    {
+      "name": "",
+      "email": "a@a.co.uk"
+    }
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "nodemon": "^1.9.2",
+    "npm-run-all": "^2.1.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "redux": "^3.5.2",
+    "redux-batched-actions": "^0.1.2",
+    "redux-devtools": "^3.3.1",
+    "redux-thunk": "^2.1.0",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "scripts": {
+    "dev.compile": "npm run dev.compile.app",
+    "dev.compile.app": "set BUILD_DEV=1 && set BUILD_PRERELEASE=1 && set BUILD_RELEASE=0 && webpack",
+    "dev.start": "npm-run-all -p dev.watch.app",
+    "dev.watch.app": "nodemon -e js,jsx -w script/library -x \"npm run dev.compile.app\"",
+    "release.clean": "rimraf ../Release/**/*",
+    "release.clean.jsmaps": "rimraf ../Release/script/deploy/**.map",
+    "release.compile": "npm run release.compile.app",
+    "release.compile.app": "set BUILD_DEV=0 && set BUILD_PRERELEASE=0 && set BUILD_RELEASE=1 && webpack --config webpack.config.release.js",
+    "release.gather": "npm run release.gather.fonts & npm run release.gather.images & npm run release.gather.html & npm run release.gather.webconfig",
+    "release.gather.fonts": "copyfiles ./fonts/**/*.* ../Release",
+    "release.gather.images": "copyfiles ./img/**/*.* ../Release",
+    "release.gather.html": "copyfiles ./*.{htm,html} ../Release",
+    "release.gather.webconfig": "copyfiles ./*.config ../Release",
+    "release.publish": "npm run release.publish.ui",
+    "release.publish.ui": "npm run release.clean && npm run release.gather && npm run release.compile && npm run release.clean.jsmaps"
+  }
+}

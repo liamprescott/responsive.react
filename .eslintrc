@@ -1,0 +1,34 @@
+{
+  "extends": "airbnb",
+
+  "globals": {
+    "__DEV__": false,
+    "__RELEASE__": false
+  },
+
+  "parser": "babel-eslint",
+
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "plugins": [
+    "react"
+  ],
+
+  "root" : true,
+
+  "rules": {
+    "no-unused-vars": "warn",
+    "max-len": "off",
+    "no-console": "off", // "warn"
+
+    "react/sort-comp": "off", // "warn", // Fix this one!!
+    "react/prop-types": "off", // Fix this one!!
+    "react/prefer-stateless-function": "off", // Keep this one!!
+    "react/jsx-closing-bracket-location": [ 1, "props-aligned" ] // Keep this one!!
+  }
+
+}
